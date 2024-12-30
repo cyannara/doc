@@ -10,10 +10,11 @@
 8. Adonis.js
 9. Derby.js
 
+[Express 미들웨어](https://lakelouise.tistory.com/211)
 
-### vue example
-https://ko.vuejs.org/examples/#todomvc
-
+### vue reference
+(Example)[https://ko.vuejs.org/examples/#todomvc]
+(toturial)[https://ko.vuejs.org/tutorial/#step-1]
 
 watch VS watchEffect
 watch와 watchEffect 둘 다 관련 작업(api call, push route 등)을 반응적으로 수행할 수 있게 해준다. 하지만 주요한 차이점은 관련된 반응형 데이터를 추적하는 방식이다.
