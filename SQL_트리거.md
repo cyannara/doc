@@ -26,6 +26,12 @@
 - DROP TABLE 방지 로그
 - 특정 유저가 테이블 구조 변경 시 관리자 알림
 
+## ■ 트리거 주의사항
+
+- 트리거 안에서 DML → 또 다른 트리거 실행 → 무한 루프 가능성 있음
+- 지나치게 남발하면 성능 저하
+- 비즈니스 로직은 가능하면 `애플리케이션 로직`에 두고, 트리거는 `무결성/로그/감사` 위주로 활용
+
 ## ■ 트리거 종류
 
 ### 1. DML 트리거
@@ -49,9 +55,15 @@
 CREATE OR REPLACE TRIGGER trigger_name
 BEFORE INSERT OR UPDATE OR DELETE ON table_name
 FOR EACH ROW
+WHEN (NEW.quantity > 10)
 BEGIN
    -- 트리거가 실행할 코드
-   DBMS_OUTPUT.PUT_LINE('트리거 동작함');
+  IF INSERTING THEN
+    DBMS_OUTPUT.PUT_LINE('등록 트리거 동작함');
+  ELSIF DELETING THEN
+    DBMS_OUTPUT.PUT_LINE('삭제 트리거 동작함');
+  END IF;
+  DBMS_OUTPUT.PUT_LINE('트리거 동작함');
 END;
 ```
 
@@ -63,6 +75,11 @@ END;
 ### FOR EACH ROW :
 
 - 행 단위 트리거 (없으면 문장 단위 트리거)
+
+### WHEN :
+
+- 트리거 정의 시점에서 조건을 걸어, `조건이 만족될 때만 트리거가 실행`되도록 제한
+- **행 수준 트리거(ROW TRIGGER)**에서만 사용 가능 (FOR EACH ROW).
 
 ### :OLD / :NEW 의사 레코드
 
