@@ -29,3 +29,13 @@
 - 삭제처리: GET /postsDelete
 - 작성폼: GET /postsRegistView
 - 수정폼: GET /postsUpdateView
+
+### 네이핑 매핑(컨트롤러->서비스->매퍼)
+|계층|이름(조회)|등록|등록폼|
+|:--|:--|:--|:--|
+|URI|/user/userList.do|/user/userInsert.do|/user/userRegistView.do|
+|Controller|userList()|userInsert()||
+|Service|selectUserList()|insertUser()||
+|Mapper|selectUserList()|insertUser()||
+|JSP|userList.jsp||userRegist.jsp|
+
