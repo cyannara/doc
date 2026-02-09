@@ -1,4 +1,4 @@
-## 일반적인 네이밍룰
+## 일반적인 네이밍룰(REST 스타일)
 
 ### 네이밍룰
 - DB: snake_case
@@ -6,7 +6,7 @@
 - 클래스 : PascalCase
 - 메서드,변수 : camelCase
 
-### 컨트롤러 URI(restful) 
+### 컨트롤러 URI
 - 목록: GET /posts
 - 상세: GET /posts/1
 - 작성처리: POST /posts
@@ -14,6 +14,15 @@
 - 삭제처리: DELETE /posts/1
 - 작성폼: GET /posts/new
 - 수정폼: GET /posts/1/edit
+
+### 네이핑 매핑(컨트롤러->서비스->매퍼)
+|계층|이름(조회)|등록|등록폼|
+|:--|:--|:--|:--|
+|URI|/user|/user|/user/new|
+|Controller|selectUserList()|create()|createForm()|
+|Service|selectUserList()|createUser()||
+|Mapper|selectUserList()|save()||
+|JSP|user-list||user-regist|
 
 ## 공공 SI (egovFramework) 
 ### 네이밍룰
