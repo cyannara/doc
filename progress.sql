@@ -1,4 +1,6 @@
- CREATE TABLE "HOLIDAY" 
+/* 진척율 계산 */
+
+CREATE TABLE "HOLIDAY" 
    (	"SEQ" NUMBER, 
 	"DT" DATE NOT NULL ENABLE, 
 	"WEEK_NM" VARCHAR2(50), 
@@ -96,4 +98,5 @@ SELECT  i.project_id                                            AS "프로젝트
   JOIN project p ON i.project_id = p.project_id
  WHERE i.due_at IS NOT NULL
  GROUP BY i.project_id, p.project_name;
+
 
