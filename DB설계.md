@@ -115,6 +115,13 @@ relation : @Entity
 - 제1정규형에 속하고 기본키에 속하지 않는 모든 속성들이 기본키에 완전 함수 종속이면 제2정규형에 속한다.
 - 학번과 수간과목이 기본키인 경우에 점수는 완전종속이지만 학년은 학번에만 종속되는 부분함수종속이다. -> 제2정규형 대상임
 
+제3정규형
+
+- 기본키에 속하지 않는 모든 속성이 기본키에 이행적 함수 종속이 아니면 제3정규형에 속한다.
+- 학생, 학과, 학번이 있는 경우 학생이 학과에 소속되고 학과별로 지도교수가 배정되기 때문에 이행적 함수 종속이다. -> 이행적함수 종속을 제거하여 두 개의 릴레이션으로 만듬( 학번,학과), (학과, 지도교수)
+
+<img src="./images/db_04.png">
+
 ## mysql -> oracle 마이그레이션
 
 1. mysql connector/j 다운로드
@@ -124,10 +131,10 @@ https://dev.mysql.com/downloads/connector/j/
 ```
 
 2. oracle sql developer에 라이브러리 등록  
-   도구 메뉴 → 환경설정 → 데이터베이스 → 타사 JDBC 드라이버
+   도구 메뉴 → 환경설정 → 데이터베이스 → 타사 JDBC 드라이버  
    <img src="./images/db_01.png">
 
-3. mysql 접속
+3. mysql 접속  
    <img src="./images/db_02.png">
 
-![alt text](image.png)
+   <img src="./images/db_03.png">
